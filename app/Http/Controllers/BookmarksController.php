@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+
 // use Symfony\Component\HttpFoundation\Session\Session;
 
 class BookmarksController extends Controller
@@ -55,8 +56,7 @@ class BookmarksController extends Controller
             'urldata' => 'required'
         ]);
 
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             return response([
                 'errors' => [
                     $validator->messages()
@@ -72,7 +72,7 @@ class BookmarksController extends Controller
         // $bookmark->save();
         Auth::user()->bookmarks()->save($bookmark);
 
-        // Session::flash('message', 'This is a message!'); 
+        // Session::flash('message', 'This is a message!');
 
         Session::flash('success', 'Bookmark was added successfully!');
 
